@@ -11,6 +11,8 @@ This library provides FFmpeg builds ported to JavaScript using [Emscripten proje
 * build scripts in package.json
   * To build docker image run `npm run build-docker`
   * Run `npm run build` to build the js files after building the image, this will put the build files in a new `dist` folder.
+* Support for passing individual files to the worker, by `postMessage` of type `image` with parameter `file` as `{name: string, data: Blob}`
+  * `worker.postMessage({type: "image", file: { name: filename, data: blob }})`
 
 ## Builds
 
