@@ -1,14 +1,24 @@
 {
-  "name": "ffmpeg.js",
-  "version": "4.2.9003",
-  "description": "Port of FFmpeg with Emscripten",
-  "main": "ffmpeg-webm.js",
+  "name": "@repalash/ffmpeg.js",
+  "version": "4.2.9004",
+  "description": "Port of FFmpeg with Emscripten, fork of Kagami/ffmpeg.js",
+  "main": "dist/ffmpeg-webm.js",
   "scripts": {
-    "test": "mocha test/test.js"
+    "test": "mocha test/test.js",
+    "build-docker": "docker build --progress=plain -t local-ffmpeg.js .",
+    "build": "docker run --rm -it -v C:\\Users\\Admin\\Projects\\ffmpeg.js:/mnt -w /opt local-ffmpeg.js /bin/bash -c \"./build.sh\""
   },
+  "files": [
+    "dist",
+    "LICENSE.MP4",
+    "LICENSE.WEBM",
+    "COPYING.GPLv2",
+    "COPYING.LGPLv2.1",
+    "README.md"
+  ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Kagami/ffmpeg.js.git"
+    "url": "git+https://github.com/repalash/ffmpeg.js.git"
   },
   "keywords": [
     "asm.js",
@@ -20,9 +30,9 @@
   "license": "(LGPL-2.1+ OR GPL-2.0)",
   "ethereum": "0x3ec9a73ba55a22f020226be8b4496304d12be0e1",
   "bugs": {
-    "url": "https://github.com/Kagami/ffmpeg.js/issues"
+    "url": "https://github.com/repalash/ffmpeg.js/issues"
   },
-  "homepage": "https://github.com/Kagami/ffmpeg.js#readme",
+  "homepage": "https://github.com/repalash/ffmpeg.js#readme",
   "devDependencies": {
     "chai": "latest",
     "mocha": "latest"

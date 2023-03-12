@@ -1,8 +1,16 @@
 # ffmpeg.js
 
-[![NPM](https://nodei.co/npm/ffmpeg.js.png?downloads=true)](https://www.npmjs.com/package/ffmpeg.js)
+[![NPM](https://nodei.co/npm/@repalash/ffmpeg.js.png?downloads=true)](https://www.npmjs.com/package/@repalash/ffmpeg.js)
 
 This library provides FFmpeg builds ported to JavaScript using [Emscripten project](https://github.com/emscripten-core/emscripten). Builds are optimized for in-browser use: minimal size for faster loading, asm.js, performance tunings, etc. Though they work in Node as well.
+
+## Changes from Kagami/ffmpeg.js
+
+* updated emscripten, ubuntu in docker
+* add webp decoder, ALLOW_MEMORY_GROWTH
+* build scripts in package.json
+  * To build docker image run `npm run build-docker`
+  * Run `npm run build` to build the js files after building the image, this will put the build files in a new `dist` folder.
 
 ## Builds
 
@@ -12,7 +20,7 @@ Currently available builds (additional builds may be added in future):
 * `ffmpeg-mp4.js` - MP4 encoding (H.264 & AAC & MP3 encoders, popular decoders).
 * `ffmpeg-worker-mp4.js` - Web Worker version of `ffmpeg-mp4.js`.
 
-Note: only NPM releases contain abovementioned files.
+Note: only NPM releases contain above-mentioned files.
 
 ## Version scheme
 
