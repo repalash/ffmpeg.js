@@ -2,7 +2,7 @@ function __ffmpegjs(__ffmpegjs_opts) {
   __ffmpegjs_opts = __ffmpegjs_opts || {};
   var __ffmpegjs_abort = abort;
   var __ffmpegjs_return;
-  var Module = {};
+  var Module = {...self["Module"]} || {};
 
   function __ffmpegjs_toU8(data) {
     if (Array.isArray(data) || data instanceof ArrayBuffer) {
@@ -22,6 +22,10 @@ function __ffmpegjs(__ffmpegjs_opts) {
       Module[key] = __ffmpegjs_opts[key];
     }
   });
+  if(__ffmpegjs_opts["wasmFilePath"]) {
+    if(Module["locateFile"]) console.warn("locateFile is already defined, overwriting it with the path provided")
+    Module["locateFile"] = function() { return __ffmpegjs_opts["wasmFilePath"]; };
+  }
 
   // Mute exception on unreachable.
   abort = function(what) {

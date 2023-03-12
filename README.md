@@ -6,21 +6,27 @@ This library provides FFmpeg builds ported to JavaScript using [Emscripten proje
 
 ## Changes from Kagami/ffmpeg.js
 
-* updated emscripten, ubuntu in docker
-* add webp decoder, ALLOW_MEMORY_GROWTH
-* build scripts in package.json
+* Updated emscripten, ubuntu in docker
+* Add webp decoder, ALLOW_MEMORY_GROWTH
+* Build scripts in package.json
   * To build docker image run `npm run build-docker`
+  * Check the path `C:\Users\Admin\Projects\ffmpeg.js` in package.json->scripts->build to match your path where this project is cloned
   * Run `npm run build` to build the js files after building the image, this will put the build files in a new `dist` folder.
 * Support for passing individual files to the worker, by `postMessage` of type `image` with parameter `file` as `{name: string, data: Blob}`
   * `worker.postMessage({type: "image", file: { name: filename, data: blob }})`
+* Switch to `wasm` build
+* Published to npm, cam be imported from unpkg/jsdelivr, like:
+  * https://unpkg.com/@repalash/ffmpeg.js@4.2.9005/dist/ffmpeg-worker-mp4.js
+* Fix global `Module` not getting used to support custom `locateFile` function
+* Add `wasmFilePath` option to worker to load the wasm file from a different path.
 
 ## Builds
 
 Currently available builds (additional builds may be added in future):
-* `ffmpeg-webm.js` - WebM encoding (VP8 & Opus encoders, popular decoders).
-* `ffmpeg-worker-webm.js` - Web Worker version of `ffmpeg-webm.js`.
-* `ffmpeg-mp4.js` - MP4 encoding (H.264 & AAC & MP3 encoders, popular decoders).
-* `ffmpeg-worker-mp4.js` - Web Worker version of `ffmpeg-mp4.js`.
+* `ffmpeg-webm.js`, `ffmpeg-webm.wasm` - WebM encoding (VP8 & Opus encoders, popular decoders).
+* `ffmpeg-worker-webm.js`, `ffmpeg-worker-webm.wasm` - Web Worker version of `ffmpeg-webm.js`.
+* `ffmpeg-mp4.js`, `ffmpeg-mp4.wasm` - MP4 encoding (H.264 & AAC & MP3 encoders, popular decoders).
+* `ffmpeg-worker-mp4.js`, `ffmpeg-worker-mp4.wasm` - Web Worker version of `ffmpeg-mp4.js`.
 
 Note: only NPM releases contain above-mentioned files.
 

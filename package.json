@@ -1,6 +1,6 @@
 {
   "name": "@repalash/ffmpeg.js",
-  "version": "4.2.9004",
+  "version": "4.2.9005",
   "description": "Port of FFmpeg with Emscripten, fork of Kagami/ffmpeg.js",
   "main": "dist/ffmpeg-webm.js",
   "scripts": {
